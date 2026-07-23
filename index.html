@@ -748,6 +748,88 @@
       font-size: 0.78rem;
     }
 
+    .studio-status {
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, 0.34);
+    }
+
+    .studio-status strong {
+      display: block;
+      margin-bottom: 0.45rem;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .studio-status p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .legal {
+      padding-block: clamp(3.5rem, 7vw, 6rem);
+      border-top: 1px solid var(--line);
+      background: var(--mist);
+    }
+
+    .legal-header {
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .legal-header h2 {
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+    }
+
+    .legal-header p {
+      color: var(--ink-soft);
+    }
+
+    .legal-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .legal details {
+      border: 1px solid rgba(29, 61, 55, 0.18);
+      border-radius: 0.8rem;
+      background: rgba(253, 252, 248, 0.72);
+    }
+
+    .legal summary {
+      padding: 1.15rem 1.3rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .legal-copy {
+      max-width: 850px;
+      padding: 0 1.3rem 1.35rem;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+
+    .legal-copy h3 {
+      margin: 1.4rem 0 0.35rem;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .legal-copy p,
+    .legal-copy ul {
+      margin: 0.45rem 0;
+    }
+
+    .legal-copy li + li {
+      margin-top: 0.35rem;
+    }
+
     .site-footer {
       padding: 1.5rem 0;
       color: rgba(253, 252, 248, 0.8);
@@ -1076,7 +1158,7 @@
           <div class="coming-soon-copy">
             <p class="eyebrow">Online collection</p>
             <h3>Coming soon.</h3>
-            <p>New pieces will appear here after the next firing. Join the studio list for the first look.</p>
+            <p>New pieces will appear here after the next firing. Return to the studio for the first look.</p>
           </div>
         </div>
       </div>
@@ -1106,14 +1188,52 @@
           <h2 id="newsletter-title">First look at fresh work.</h2>
           <p>Occasional notes about new firings, local markets, and the small stories behind each collection.</p>
         </div>
-        <form class="signup-form" id="signup-form">
-          <label for="email">Join the studio list</label>
-          <div class="signup-row">
-            <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" aria-describedby="form-note" required>
-            <button type="submit" aria-label="Join the studio email list">→</button>
-          </div>
-          <p class="form-note" id="form-note" aria-live="polite">Quiet updates only. Unsubscribe anytime.</p>
-        </form>
+        <div class="studio-status" role="note">
+          <strong>Studio list coming soon</strong>
+          <p>Email collection is currently disabled. NR Ceramics will not collect your address until a secure signup and unsubscribe system is ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="legal" id="legal" aria-labelledby="legal-title">
+      <div class="shell">
+        <div class="legal-header">
+          <p class="eyebrow">Clear &amp; considered</p>
+          <h2 id="legal-title">Studio policies.</h2>
+          <p>Plain-language information for visitors while the online shop is being prepared.</p>
+        </div>
+        <div class="legal-grid">
+          <details id="privacy">
+            <summary>Privacy notice</summary>
+            <div class="legal-copy">
+              <p><strong>Effective July 22, 2026.</strong> NR Ceramics is a small pottery studio based in Kirkland, Washington. This notice describes this website’s current data practices.</p>
+              <h3>Information collected</h3>
+              <p>NR Ceramics does not currently accept orders, create customer accounts, operate an email list, use advertising trackers, run analytics, or set cookies through this website. Please do not send payment details or sensitive personal information through the site.</p>
+              <p>Infrastructure providers used to host and secure the site may automatically process limited technical data, such as IP address, browser or device type, requested page, and request time. This data is used to deliver the site, prevent abuse, and diagnose technical problems.</p>
+              <h3>Use, disclosure, and retention</h3>
+              <p>Technical data is used only for site operation and security. NR Ceramics does not sell personal information, share it for cross-context behavioral advertising, or use it for targeted advertising. Information may be disclosed to hosting and security providers or when reasonably necessary to comply with law, protect rights, or prevent fraud. Provider retention is governed by each provider’s applicable terms and settings.</p>
+              <h3>Your choices</h3>
+              <p>Because this site does not currently track visitors or sell or share personal information, browser Do Not Track and Global Privacy Control signals do not change its behavior. If NR Ceramics later adds ordering, analytics, or email tools, this notice and any required controls will be updated before collection begins.</p>
+              <h3>Children and changes</h3>
+              <p>This site is intended for a general audience and does not knowingly collect personal information from children under 13. Material changes will be posted here with a revised effective date.</p>
+            </div>
+          </details>
+          <details id="terms">
+            <summary>Website &amp; storefront terms</summary>
+            <div class="legal-copy">
+              <p><strong>Effective July 22, 2026.</strong> By using this website, you agree to these terms. If you do not agree, please discontinue use.</p>
+              <h3>No online sales yet</h3>
+              <p>The website is currently an informational collection preview. “Coming soon,” product names, images, and descriptions are not offers to sell, and the site does not accept orders or payment. Sales, shipping, returns, and warranty terms will be presented before checkout is enabled.</p>
+              <h3>Handmade character</h3>
+              <p>Each ceramic piece is handmade. Natural variations in glaze, color, dimensions, texture, and firing are part of the work and will be described with the applicable listing when pieces become available.</p>
+              <h3>Site use and ownership</h3>
+              <p>Site text, original imagery, designs, and branding belong to NR Ceramics or their respective licensors. You may browse for personal use, but may not copy, scrape, republish, misrepresent, interfere with, or misuse the site or its content.</p>
+              <h3>Disclaimers and applicable law</h3>
+              <p>The site is provided “as is” and “as available.” To the fullest extent allowed by law, NR Ceramics disclaims implied warranties relating only to use of this informational site and is not liable for indirect or consequential losses arising from that use. Nothing here limits rights or remedies that cannot legally be waived.</p>
+              <p>Washington law governs these terms, without overriding mandatory consumer protections that apply where a visitor lives. Any future transaction-specific terms will control over these general website terms if they conflict.</p>
+            </div>
+          </details>
+        </div>
       </div>
     </section>
   </main>
@@ -1124,7 +1244,8 @@
       <p class="footer-location">Handmade in Kirkland, WA</p>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#story">About</a>
-        <a href="#newsletter">Contact</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
       </nav>
     </div>
   </footer>
@@ -1133,8 +1254,6 @@
     (() => {
       const menuButton = document.querySelector('.menu-button');
       const navigation = document.querySelector('.site-nav');
-      const signupForm = document.querySelector('#signup-form');
-      const formNote = document.querySelector('#form-note');
 
       const closeMenu = () => {
         menuButton.setAttribute('aria-expanded', 'false');
@@ -1161,15 +1280,11 @@
         if (window.innerWidth > 940) closeMenu();
       });
 
-      signupForm.addEventListener('submit', (event) => {
-        event.preventDefault();
-        const email = signupForm.elements.email;
-        if (!email.checkValidity()) {
-          email.reportValidity();
-          return;
-        }
-        formNote.textContent = 'You’re on the list. Welcome to the studio.';
-        signupForm.reset();
+      document.querySelectorAll('.footer-links a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const target = document.querySelector(link.getAttribute('href'));
+          if (target instanceof HTMLDetailsElement) target.open = true;
+        });
       });
     })();
   </script>
