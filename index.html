@@ -1,0 +1,1177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NR Ceramics creates quiet, sculptural pottery by hand in Kirkland, Washington.">
+  <meta name="theme-color" content="#d8e8e6">
+  <title>NR Ceramics — Handmade in Kirkland</title>
+  <style>
+    :root {
+      --ink: #183a42;
+      --ink-soft: #526b70;
+      --pine: #253f43;
+      --sage: #75aaa5;
+      --mist: #d8e8e6;
+      --blue: #6eabba;
+      --blue-deep: #315f70;
+      --clay: #6e3d39;
+      --aqua: #8ac7c4;
+      --paper: #f4f1e9;
+      --white: #fdfbf6;
+      --line: rgba(24, 58, 66, 0.14);
+      --shadow: 0 24px 60px rgba(22, 55, 63, 0.14);
+      --serif: "Avenir Next", sans-serif;
+      --sans: "Avenir Next", sans-serif;
+      --radius: 1.5rem;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--blue-deep);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 0.75rem;
+      left: 0.75rem;
+      z-index: 100;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--white);
+      transform: translateY(-150%);
+      transition: transform 180ms ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 3rem));
+      margin-inline: auto;
+    }
+
+    .site-header {
+      position: absolute;
+      inset: 0 0 auto;
+      z-index: 20;
+      height: 90px;
+    }
+
+    .nav-wrap {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 2.4rem;
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50% 48% 52% 46%;
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      font-size: 0.82rem;
+      font-weight: 650;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .site-nav a:not(.nav-cta) {
+      position: relative;
+      padding-block: 0.8rem;
+    }
+
+    .site-nav a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: 0.55rem;
+      height: 1px;
+      background: currentColor;
+      transition: right 180ms ease;
+    }
+
+    .site-nav a:hover::after {
+      right: 0;
+    }
+
+    .nav-cta {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.7rem 1.2rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      transition: color 180ms ease, background 180ms ease;
+    }
+
+    .nav-cta:hover {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .menu-button {
+      width: 48px;
+      height: 48px;
+      display: none;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--ink);
+      background: rgba(253, 252, 248, 0.7);
+      cursor: pointer;
+    }
+
+    .menu-icon,
+    .menu-icon::before,
+    .menu-icon::after {
+      width: 19px;
+      height: 1.5px;
+      display: block;
+      background: currentColor;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .menu-icon {
+      position: relative;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-icon::before { transform: translateY(-6px); }
+    .menu-icon::after { transform: translateY(6px); }
+
+    .menu-button[aria-expanded="true"] .menu-icon {
+      background: transparent;
+    }
+
+    .menu-button[aria-expanded="true"] .menu-icon::before {
+      transform: rotate(45deg);
+    }
+
+    .menu-button[aria-expanded="true"] .menu-icon::after {
+      transform: rotate(-45deg);
+    }
+
+    .hero {
+      min-height: 780px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--mist);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(460px, 1.08fr);
+      align-items: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      padding: 9rem 0 5rem;
+    }
+
+    .eyebrow {
+      margin: 0 0 1.25rem;
+      color: var(--blue-deep);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero h1,
+    .section-title,
+    .about-copy h2,
+    .newsletter h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.035em;
+    }
+
+    .hero h1 {
+      max-width: 600px;
+      font-size: clamp(4.2rem, 8vw, 7.7rem);
+    }
+
+    .hero h1 em {
+      display: block;
+      color: var(--blue-deep);
+      font-weight: inherit;
+      font-style: normal;
+    }
+
+    .hero-lede {
+      max-width: 520px;
+      margin: 2rem 0 0;
+      color: var(--ink-soft);
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 2.5rem;
+    }
+
+    .button {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      padding: 0.9rem 1.45rem;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-dark {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .button-dark:hover {
+      background: var(--pine);
+    }
+
+    .button-light {
+      background: transparent;
+    }
+
+    .button-light:hover {
+      background: rgba(253, 252, 248, 0.55);
+    }
+
+    .arrow {
+      font-size: 1.1rem;
+      line-height: 1;
+      transition: transform 180ms ease;
+    }
+
+    .button:hover .arrow {
+      transform: translateX(3px);
+    }
+
+    .pottery-scene {
+      position: relative;
+      min-height: 560px;
+      isolation: isolate;
+    }
+
+    .pottery-scene::before {
+      content: "";
+      position: absolute;
+      inset: 4% -4% 2%;
+      z-index: -2;
+      border: 1px solid rgba(49, 95, 112, 0.16);
+      border-radius: 49% 51% 46% 54% / 53% 45% 55% 47%;
+      background:
+        linear-gradient(rgba(216, 232, 230, 0.42), rgba(253, 251, 246, 0.68)),
+        url("assets/ceramics/textures/ripple-glaze.jpg") center / cover;
+      background-blend-mode: screen;
+      box-shadow: inset 0 0 90px rgba(253, 251, 246, 0.7);
+      transform: rotate(-3deg);
+    }
+
+    .pottery-scene::after {
+      content: "";
+      position: absolute;
+      right: 5%;
+      bottom: 9%;
+      left: 4%;
+      z-index: -1;
+      height: 15%;
+      border-radius: 50%;
+      background: rgba(25, 62, 58, 0.13);
+      filter: blur(24px);
+      transform: perspective(400px) rotateX(65deg);
+    }
+
+    .vase {
+      --size: 10rem;
+      position: absolute;
+      width: var(--size);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(253, 252, 248, 0.7);
+      border-radius: 50%;
+      background: rgba(253, 252, 248, 0.25);
+      box-shadow: 0 22px 45px rgba(32, 71, 66, 0.12), inset 0 0 30px rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(3px);
+    }
+
+    .vase img {
+      width: 112%;
+      height: 112%;
+      max-width: none;
+      object-fit: contain;
+      filter: drop-shadow(0 18px 18px rgba(16, 45, 52, 0.22));
+      pointer-events: none;
+    }
+
+    .vase-main {
+      --size: clamp(16rem, 28vw, 22rem);
+      right: 5%;
+      bottom: 5%;
+      animation: float-main 6.5s ease-in-out infinite;
+    }
+
+    .vase-main img {
+      width: 118%;
+      height: 118%;
+      transform: translateY(2%) rotate(3deg);
+    }
+
+    .vase-small {
+      --size: clamp(8rem, 15vw, 11rem);
+      top: 5%;
+      left: 7%;
+      animation: float-small 5.5s ease-in-out infinite;
+    }
+
+    .vase-small img {
+      width: 126%;
+      height: 126%;
+      transform: rotate(-8deg);
+    }
+
+    .vase-mid {
+      --size: clamp(10rem, 18vw, 13rem);
+      top: 16%;
+      right: 1%;
+      animation: float-mid 7s ease-in-out infinite;
+    }
+
+    .vase-mid img {
+      width: 116%;
+      height: 116%;
+      transform: rotate(6deg);
+    }
+
+    .scene-note {
+      position: absolute;
+      left: 8%;
+      bottom: 12%;
+      max-width: 9rem;
+      margin: 0;
+      color: var(--ink-soft);
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-style: normal;
+      line-height: 1.35;
+    }
+
+    @keyframes float-main {
+      0%, 100% { transform: translateY(0) rotate(-1deg); }
+      50% { transform: translateY(-14px) rotate(1deg); }
+    }
+
+    @keyframes float-small {
+      0%, 100% { transform: translateY(0) rotate(2deg); }
+      50% { transform: translateY(12px) rotate(-2deg); }
+    }
+
+    @keyframes float-mid {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .marquee {
+      position: relative;
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      background:
+        linear-gradient(rgba(253, 251, 246, 0.9), rgba(253, 251, 246, 0.9)),
+        url("assets/ceramics/textures/ocean-glaze.jpg") center 48% / cover;
+    }
+
+    .marquee-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1rem, 3.5vw, 3.5rem);
+      color: var(--ink-soft);
+      font-family: var(--serif);
+      font-size: clamp(1rem, 1.6vw, 1.25rem);
+      font-style: normal;
+      white-space: nowrap;
+    }
+
+    .marquee-dot {
+      width: 5px;
+      height: 5px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .section {
+      padding-block: clamp(5.5rem, 10vw, 9rem);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-bottom: clamp(2.6rem, 5vw, 4.5rem);
+    }
+
+    .section-title {
+      max-width: 680px;
+      font-size: clamp(3rem, 6vw, 5.4rem);
+    }
+
+    .section-intro {
+      max-width: 345px;
+      margin: 0 0 0.45rem;
+      color: var(--ink-soft);
+    }
+
+    .coming-soon-card {
+      position: relative;
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(22, 55, 53, 0.09);
+      border-radius: var(--radius);
+      background:
+        linear-gradient(rgba(216, 232, 230, 0.88), rgba(244, 241, 233, 0.9)),
+        url("assets/ceramics/textures/ocean-glaze.jpg") center / cover;
+      text-align: center;
+    }
+
+    .coming-soon-card::before {
+      content: "";
+      position: absolute;
+      width: min(44vw, 510px);
+      aspect-ratio: 1;
+      border: 1px solid rgba(49, 95, 112, 0.14);
+      border-radius: 50%;
+      background:
+        linear-gradient(rgba(253, 251, 246, 0.5), rgba(138, 199, 196, 0.28)),
+        url("assets/ceramics/textures/ripple-glaze.jpg") center / cover;
+      background-blend-mode: screen;
+      opacity: 0.62;
+    }
+
+    .coming-soon-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      padding: 3rem 1.5rem;
+    }
+
+    .coming-soon-copy .eyebrow {
+      margin-bottom: 1rem;
+    }
+
+    .coming-soon-copy h3 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .coming-soon-copy p:last-child {
+      max-width: 420px;
+      margin: 1.2rem auto 0;
+      color: var(--ink-soft);
+    }
+
+    .about {
+      padding-block: clamp(5.5rem, 10vw, 9rem);
+      color: var(--white);
+      background: var(--pine);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(320px, 0.9fr) minmax(0, 1.1fr);
+      align-items: center;
+      gap: clamp(3rem, 8vw, 8rem);
+    }
+
+    .about-art {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 48% 52% 46% 54% / 43% 45% 55% 57%;
+      background:
+        linear-gradient(rgba(216, 232, 230, 0.76), rgba(138, 199, 196, 0.52)),
+        url("assets/ceramics/textures/ripple-glaze.jpg") center / cover;
+      background-blend-mode: screen;
+      box-shadow:
+        inset 0 0 70px rgba(253, 251, 246, 0.46),
+        0 24px 60px rgba(10, 35, 41, 0.16);
+      overflow: hidden;
+    }
+
+    .about-art::before,
+    .about-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+    }
+
+    .about-art::before { inset: 10%; }
+    .about-art::after { display: none; }
+
+    .about-vase {
+      position: relative;
+      z-index: 1;
+      width: 82%;
+      max-height: 470px;
+      object-fit: contain;
+      filter: drop-shadow(0 25px 25px rgba(0, 0, 0, 0.28));
+      transform: rotate(-2deg);
+    }
+
+    .about .eyebrow {
+      color: #b9cbc2;
+    }
+
+    .about-copy h2 {
+      max-width: 650px;
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+    }
+
+    .about-copy h2 em {
+      color: #b9cbc2;
+      font-weight: inherit;
+      font-style: normal;
+    }
+
+    .about-copy > p:not(.eyebrow) {
+      max-width: 560px;
+      margin: 2rem 0 0;
+      color: rgba(253, 252, 248, 0.72);
+      font-size: 1.05rem;
+    }
+
+    .about-details {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .about-details span {
+      display: block;
+      color: rgba(253, 252, 248, 0.58);
+      font-size: 0.69rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .about-details strong {
+      display: block;
+      margin-top: 0.25rem;
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+    }
+
+    .newsletter {
+      padding-block: clamp(5rem, 9vw, 8rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .newsletter-wrap {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(380px, 0.7fr);
+      align-items: end;
+      gap: clamp(3rem, 9vw, 8rem);
+    }
+
+    .newsletter h2 {
+      max-width: 720px;
+      font-size: clamp(3.2rem, 6.5vw, 6rem);
+    }
+
+    .newsletter-copy > p {
+      max-width: 590px;
+      margin: 1.6rem 0 0;
+      color: var(--ink-soft);
+    }
+
+    .signup-form label {
+      display: block;
+      margin-bottom: 0.8rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .signup-row {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .signup-row input {
+      min-width: 0;
+      width: 100%;
+      min-height: 58px;
+      padding: 0.7rem 0;
+      border: 0;
+      color: var(--ink);
+      background: transparent;
+      font-size: 1rem;
+      outline: 0;
+    }
+
+    .signup-row input::placeholder {
+      color: #71837e;
+      opacity: 1;
+    }
+
+    .signup-row button {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--ink);
+      font-size: 1.15rem;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease;
+    }
+
+    .signup-row button:hover {
+      background: var(--pine);
+      transform: translateX(2px);
+    }
+
+    .form-note {
+      min-height: 1.5em;
+      margin: 0.8rem 0 0;
+      color: var(--ink-soft);
+      font-size: 0.78rem;
+    }
+
+    .site-footer {
+      padding: 1.5rem 0;
+      color: rgba(253, 252, 248, 0.8);
+      background: var(--ink);
+    }
+
+    .footer-wrap {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+    }
+
+    .footer-location {
+      margin: 0;
+      font-size: 0.72rem;
+      font-weight: 650;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: end;
+      gap: 1.25rem;
+      font-size: 0.78rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    @media (max-width: 940px) {
+      .menu-button {
+        display: grid;
+      }
+
+      .site-nav {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1.3rem;
+        visibility: hidden;
+        opacity: 0;
+        color: var(--ink);
+        background: rgba(237, 241, 235, 0.97);
+        backdrop-filter: blur(12px);
+        font-family: var(--serif);
+        font-size: 2rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        transition: opacity 180ms ease, visibility 180ms ease;
+      }
+
+      .site-nav.is-open {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .site-nav .nav-cta {
+        margin-top: 0.7rem;
+        font-family: var(--sans);
+        font-size: 0.76rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 0.88fr) minmax(350px, 1.12fr);
+        gap: 1.5rem;
+      }
+
+      .section-header {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .about-grid {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 3rem;
+      }
+
+      .newsletter-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .shell {
+        width: min(100% - 2rem, 620px);
+      }
+
+      .site-header {
+        height: 76px;
+      }
+
+      .brand {
+        font-size: 1.1rem;
+      }
+
+      .brand-mark {
+        width: 2.15rem;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 8.5rem 0 3.5rem;
+      }
+
+      .hero h1 {
+        max-width: 460px;
+        font-size: clamp(4.1rem, 22vw, 6.4rem);
+      }
+
+      .hero-lede {
+        margin-top: 1.5rem;
+      }
+
+      .hero-actions {
+        margin-top: 2rem;
+      }
+
+      .hero-actions .button {
+        flex: 1 1 150px;
+      }
+
+      .pottery-scene {
+        min-height: 390px;
+      }
+
+      .pottery-scene::before {
+        inset: 2% 0;
+      }
+
+      .vase-main {
+        --size: clamp(14rem, 58vw, 18rem);
+        right: 4%;
+      }
+
+      .vase-small {
+        --size: clamp(7rem, 29vw, 9rem);
+        left: 3%;
+      }
+
+      .vase-mid {
+        --size: clamp(8rem, 34vw, 10rem);
+        top: 9%;
+        right: 1%;
+      }
+
+      .scene-note {
+        left: 6%;
+        bottom: 8%;
+        font-size: 0.88rem;
+      }
+
+      .marquee-inner {
+        min-height: 64px;
+        justify-content: flex-start;
+        overflow: hidden;
+      }
+
+      .section {
+        padding-block: 5.5rem;
+      }
+
+      .section-title {
+        font-size: clamp(3rem, 15vw, 4.3rem);
+      }
+
+      .coming-soon-card {
+        min-height: 330px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-art {
+        min-height: 390px;
+        order: 2;
+      }
+
+      .about-copy h2 {
+        font-size: clamp(3.1rem, 15vw, 4.6rem);
+      }
+
+      .newsletter h2 {
+        font-size: clamp(3rem, 15vw, 4.6rem);
+      }
+
+      .footer-wrap {
+        grid-template-columns: 1fr auto;
+      }
+
+      .footer-location {
+        display: none;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+        flex-basis: auto;
+      }
+
+      .about-details {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-wrap {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="shell nav-wrap">
+      <a class="brand" href="#top" aria-label="NR Ceramics home">
+        <span class="brand-mark" aria-hidden="true">NR</span>
+        <span>NR Ceramics</span>
+      </a>
+
+      <button class="menu-button" type="button" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false">
+        <span class="menu-icon" aria-hidden="true"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#featured">Featured</a>
+        <a href="#story">Our story</a>
+        <a class="nav-cta" href="#newsletter">Studio notes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="shell hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Handmade · Kirkland, Washington</p>
+          <h1 id="hero-title">Quiet forms, <em>made slowly.</em></h1>
+          <p class="hero-lede">Small-batch pottery shaped by water, weather, and the simple rituals that make a home feel like your own.</p>
+          <div class="hero-actions">
+            <a class="button button-dark" href="#featured">Shop the collection <span class="arrow" aria-hidden="true">→</span></a>
+            <a class="button button-light" href="#story">Meet the studio</a>
+          </div>
+        </div>
+
+        <div class="pottery-scene" aria-label="A floating arrangement of handcrafted NR Ceramics pieces">
+          <div class="vase vase-small" aria-hidden="true">
+            <img src="assets/ceramics/edited/ripple-platter.png" alt="">
+          </div>
+          <div class="vase vase-mid" aria-hidden="true">
+            <img src="assets/ceramics/edited/fish-vase.png" alt="">
+          </div>
+          <div class="vase vase-main" aria-hidden="true">
+            <img src="assets/ceramics/edited/blue-vessel.png" alt="">
+          </div>
+          <p class="scene-note">Wheel-thrown forms,<br>each one of one.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="Studio values">
+      <div class="shell marquee-inner">
+        <span>Inspired by the sea</span><span class="marquee-dot" aria-hidden="true"></span>
+        <span>Made by hand</span><span class="marquee-dot" aria-hidden="true"></span>
+        <span>Small batch pieces</span><span class="marquee-dot" aria-hidden="true"></span>
+        <span>Pacific Northwest clays and materials</span>
+      </div>
+    </div>
+
+    <section class="section" id="featured" aria-labelledby="featured-title">
+      <div class="shell">
+        <div class="section-header">
+          <div>
+            <p class="eyebrow">The latest firing</p>
+            <h2 class="section-title" id="featured-title">Pieces with a quiet presence.</h2>
+          </div>
+          <p class="section-intro">The first online collection is taking shape in the studio.</p>
+        </div>
+
+        <div class="coming-soon-card" role="status" aria-label="The NR Ceramics online collection is coming soon">
+          <div class="coming-soon-copy">
+            <p class="eyebrow">Online collection</p>
+            <h3>Coming soon.</h3>
+            <p>New pieces will appear here after the next firing. Join the studio list for the first look.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="story" aria-labelledby="story-title">
+      <div class="shell about-grid">
+        <div class="about-art" aria-label="Ocean-blue perforated ceramic vessel">
+          <img class="about-vase" src="assets/ceramics/edited/blue-vessel.png" alt="">
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow">Made beside the lake</p>
+          <h2 id="story-title">Clay, water, and a little <em>Northwest calm.</em></h2>
+          <p>NR Ceramics is a small pottery studio in Kirkland, WA. Every piece is formed, glazed, and finished by hand—allowing the marks of the maker and the character of the clay to remain beautifully visible.</p>
+          <div class="about-details">
+            <div><span>Studio</span><strong>Kirkland, Washington</strong></div>
+            <div><span>Practice</span><strong>Small-batch &amp; slow made</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+      <div class="shell newsletter-wrap">
+        <div class="newsletter-copy">
+          <p class="eyebrow">From the studio</p>
+          <h2 id="newsletter-title">First look at fresh work.</h2>
+          <p>Occasional notes about new firings, local markets, and the small stories behind each collection.</p>
+        </div>
+        <form class="signup-form" id="signup-form">
+          <label for="email">Join the studio list</label>
+          <div class="signup-row">
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="Your email address" aria-describedby="form-note" required>
+            <button type="submit" aria-label="Join the studio email list">→</button>
+          </div>
+          <p class="form-note" id="form-note" aria-live="polite">Quiet updates only. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-wrap">
+      <a class="footer-brand" href="#top">NR Ceramics</a>
+      <p class="footer-location">Handmade in Kirkland, WA</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="#story">About</a>
+        <a href="#newsletter">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuButton = document.querySelector('.menu-button');
+      const navigation = document.querySelector('.site-nav');
+      const signupForm = document.querySelector('#signup-form');
+      const formNote = document.querySelector('#form-note');
+
+      const closeMenu = () => {
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open menu');
+        navigation.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
+      };
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+        menuButton.setAttribute('aria-expanded', String(!isOpen));
+        menuButton.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+        navigation.classList.toggle('is-open', !isOpen);
+        document.body.classList.toggle('menu-open', !isOpen);
+      });
+
+      navigation.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 940) closeMenu();
+      });
+
+      signupForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = signupForm.elements.email;
+        if (!email.checkValidity()) {
+          email.reportValidity();
+          return;
+        }
+        formNote.textContent = 'You’re on the list. Welcome to the studio.';
+        signupForm.reset();
+      });
+    })();
+  </script>
+</body>
+</html>

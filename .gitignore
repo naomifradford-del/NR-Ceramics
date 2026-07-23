@@ -1,0 +1,6 @@
+.DS_Store
+
+# Working image conversions and chroma-key intermediates
+assets/ceramics/quicklook/
+assets/ceramics/source-previews/
+assets/ceramics/edited/*-key.png
