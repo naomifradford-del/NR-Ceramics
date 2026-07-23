@@ -1,8 +1,7 @@
 services:
   - type: web
     name: nr-ceramics
-    runtime: static
+    runtime: docker
     branch: main
     autoDeployTrigger: commit
-    buildCommand: echo "No build step required"
-    staticPublishPath: .
+    dockerfilePath: ./Dockerfile
